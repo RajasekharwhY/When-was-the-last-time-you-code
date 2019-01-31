@@ -1,0 +1,9 @@
+Example project can be found on MS web site : https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+
+number of ways you can implement repository and unit of work pattern:
+(https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+
+link where showing exapmple of unit of work for (repositrypattern - repository for each entity) 
+(https://www.c-sharpcorner.com/UploadFile/b1df45/unit-of-work-in-repository-pattern/).
+link where showing exapmple of unit of work for (Genericrepositrypattern - repository for all the entities) 
+(http://www.janholinka.net/Blog/Article/9)
