@@ -1,1 +1,157 @@
 https://lukewickstead.wordpress.com/2013/02/09/howto-ninject-part-2-advanced-features/
+
+cache:
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using log4net;
+
+// Logic to first fetch from Local if not available then from Redis (distributed)
+
+namespace xyz
+{
+    public class CacheManager<T> : ICacheManager<T> where T : class
+    {
+        private readonly IDistributedCacheProvider _distributedCacheProvider;
+        private readonly ILocalCacheProvider _localCacheProvider;
+        private readonly CacheConfiguration _cacheConfiguration;
+        private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly HashSet<string> _subscribedKeys = new HashSet<string>();
+
+        public CacheManager(CacheConfiguration cacheConfiguration
+        , ILocalCacheProvider localCacheProvider
+        , IDistributedCacheProvider distributedCacheProvider)
+        {
+            _cacheConfiguration = cacheConfiguration;
+            _localCacheProvider = localCacheProvider;
+            _distributedCacheProvider = distributedCacheProvider;
+        }
+
+        public T Get(string key)
+        {
+            var cacheKey = GetKeyWithPrefix(key);
+            CacheValue<T> cacheValue = null;
+
+            try
+            {
+                // get from local cache provider if enabled
+                if (_cacheConfiguration.LocalCacheConfiguration.IsEnabled)
+                {
+                    cacheValue = _localCacheProvider.Get<CacheValue<T>>(cacheKey);
+                    if (cacheValue != null) return cacheValue.Value;
+                }
+
+                // get from distributed cache provider if enabled
+                if (_cacheConfiguration.DistributedCacheConfiguration.IsEnabled)
+                {
+                    cacheValue = _distributedCacheProvider.Get<CacheValue<T>>(cacheKey);
+                    
+                    // write to local cache if multilevel caching enabled
+                    if (cacheValue != null && _cacheConfiguration.LocalCacheConfiguration.IsEnabled)
+                    {
+                        _localCacheProvider.Set(cacheKey, cacheValue,
+                            _cacheConfiguration.LocalCacheConfiguration.ExpirationTimeSpan);
+
+                        // configure local cache to sync with dist cache key invalidate events.
+                        SyncLocalCache(cacheKey);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error get from Cache for Key" + cacheKey, ex);
+            }
+
+            return cacheValue != null ? cacheValue.Value : null;
+        }
+
+        public T Get(string key, Func<T> fallback)
+        {
+            var cachedValue = Get(key);
+            if (cachedValue != null)
+                return cachedValue;
+
+            cachedValue = new Lazy<T>(fallback).Value;
+            if (cachedValue != null)
+                Set(key, cachedValue);
+
+            return cachedValue;
+        }
+
+        public void Set(string key, T value)
+        {
+            var cacheKey = GetKeyWithPrefix(key);
+            var cacheValue = new CacheValue<T>() { CreateDateTime = DateTime.Now, Value = value };
+
+            try
+            {
+                // Set to distributed cache provider if enabled
+                if (_cacheConfiguration.DistributedCacheConfiguration.IsEnabled)
+                {
+                    _distributedCacheProvider.Set(cacheKey, cacheValue,
+                        _cacheConfiguration.DistributedCacheConfiguration.ExpirationTimeSpan);
+
+                    // delete from local cache when multi level caching enabled, let it rebuild on Get.
+                    if (_cacheConfiguration.LocalCacheConfiguration.IsEnabled)
+                        _localCacheProvider.Delete(cacheKey);
+                }
+                // Set to local cache provider if enabled
+                else if (_cacheConfiguration.LocalCacheConfiguration.IsEnabled)
+                {
+                    _localCacheProvider.Set(cacheKey, cacheValue,
+                        _cacheConfiguration.LocalCacheConfiguration.ExpirationTimeSpan);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error setting Cache Key" + cacheKey, ex);
+            }
+        }
+
+        public void Invalidate(string key)
+        {
+            var cacheKey = GetKeyWithPrefix(key);
+            try
+            {
+                // Delete from distribute cache provider if enabled
+                if (_cacheConfiguration.DistributedCacheConfiguration.IsEnabled)
+                    _distributedCacheProvider.Delete(cacheKey);
+
+                // Delete from local cache provider if enabled
+                if (_cacheConfiguration.LocalCacheConfiguration.IsEnabled)
+                    _localCacheProvider.Delete(cacheKey);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error invalidating Cache Key" + cacheKey, ex);
+            }
+        }
+
+        
+        private void SyncLocalCache(string cacheKey)
+        {
+            if (_subscribedKeys.Contains(cacheKey)) return;
+
+            try
+            {
+                _distributedCacheProvider.NotifyOnKeyInvalidate(cacheKey, () =>
+                {
+                    _localCacheProvider.Delete(cacheKey);
+                });
+
+                _subscribedKeys.Add(cacheKey);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error invalidating Cache Key on Sync" + cacheKey, ex);
+            }
+        }
+
+        private string GetKeyWithPrefix(string key)
+        {
+            return string.IsNullOrWhiteSpace(_cacheConfiguration.KeyPrefix) ? key 
+                : string.Format("{0}:{1}", _cacheConfiguration.KeyPrefix, key);
+        }
+    }
+}
+
