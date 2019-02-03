@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace code
+{
+    class GenericsList<T>
+    {
+
+        public int Count { get; set; }
+
+        public int itemCount { get; set; }
+
+        GenericsList(int maxcount)
+        {
+            this.items = new T[maxcount];
+        }
+
+        public void AddNewItem(T item)
+        {
+            if (this.items.Count() >= itemCount)
+            {
+                this.items[itemCount] = item;
+                itemCount++;
+            }
+        }
+
+        // public void RemoveAtIndex(int index)
+        // {
+        //    this.items[index] = default(T);
+        // }
+
+        public T GetItem (int Index)
+        {
+            return this.items[Index];
+        }
+
+        private T[] items;
+        
+    }
+}
