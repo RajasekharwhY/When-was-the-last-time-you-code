@@ -1,0 +1,9 @@
+03/05/2017 : 
+-------------
+IEnumerable provides minimum functinality to navigate move next (but you can not call count )
+Icollection provides minimum functionality to count ( you can count) ICollection is derived from IEnumerable so ICollection has count 
+and all the functionality from IEnumeration.
+IList supports both IEnumerable and ICollection. ( you can access by index, add range, add and remove elements)
+List is a concrete type which implements all the above IEnumerable, ICollecgtion, IList
+Dictionary is a key value pair, you can access the collection with key ( even if you have millions of records you can easily access them
+by key.) this is the advantage of Dictionary you can easily look up by the key. 
