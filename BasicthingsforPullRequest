@@ -1,0 +1,7 @@
+Things to check when submitting for pull request. 
+
+1. following naming conventions 
+2. no line breaks, indentation and formatting.
+3. check configfiles, if you are adding any thing exta which are not needed.
+4. remove un used refereences. 
+5. Make sure above is a habit when you code so you dont have to take extra care seperately.
