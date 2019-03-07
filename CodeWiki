@@ -7,3 +7,5 @@ IList supports both IEnumerable and ICollection. ( you can access by index, add 
 List is a concrete type which implements all the above IEnumerable, ICollecgtion, IList
 Dictionary is a key value pair, you can access the collection with key ( even if you have millions of records you can easily access them
 by key.) this is the advantage of Dictionary you can easily look up by the key. 
+Dictionary implements (IEnumerable, ICollection, IList and IDictioanry) -> is a collection of key value pairs. you can access easily the 
+values stored in the dictionary by key. 
