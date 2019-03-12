@@ -1,11 +1,18 @@
-03/05/2017 : 
+03/05/2019 : 
 -------------
-IEnumerable provides minimum functinality to navigate move next (but you can not call count )
-Icollection provides minimum functionality to count ( you can count) ICollection is derived from IEnumerable so ICollection has count 
+1.IEnumerable provides minimum functinality to navigate move next (but you can not call count )
+2.Icollection provides minimum functionality to count ( you can count) ICollection is derived from IEnumerable so ICollection has count 
 and all the functionality from IEnumeration.
-IList supports both IEnumerable and ICollection. ( you can access by index, add range, add and remove elements)
-List is a concrete type which implements all the above IEnumerable, ICollecgtion, IList
-Dictionary is a key value pair, you can access the collection with key ( even if you have millions of records you can easily access them
+3.IList supports both IEnumerable and ICollection. ( you can access by index, add range, add and remove elements)
+4.List is a concrete type which implements all the above IEnumerable, ICollecgtion, IList
+5.Dictionary is a key value pair, you can access the collection with key ( even if you have millions of records you can easily access them
 by key.) this is the advantage of Dictionary you can easily look up by the key. 
-Dictionary implements (IEnumerable, ICollection, IList and IDictioanry) -> is a collection of key value pairs. you can access easily the 
+6.Dictionary implements (IEnumerable, ICollection, IList and IDictioanry) -> is a collection of key value pairs. you can access easily the 
 values stored in the dictionary by key. 
+03/11/2019:
+-----------
+1.Concurrent collection 
+2.What is Thread safty ?
+3.How Lazy loading haddles thread safetly
+4.Thread local ? why we need thread local.
+5.Difference between Lazy<T> and Lazy<T>(func<T>) 
