@@ -18,3 +18,7 @@ values stored in the dictionary by key.
 5.Difference between Lazy<T> and Lazy<T>(func<T>) 
 6.Discuss about Lazy intialisation from c# in a nutshell book.
 7.Lazy<T> has a value Property -> when you call the value property then only lazy intialisation is called. 
+8.Lazy<T> Initialization is a thread safe (that means it protects during intialisation),
+but it does not protect after creation of the object, you must lock the object before accessing it. Unless the type is thread safe. 
+Thread safe objects in dot net are available in system.Collections.Concurrent --
+9.Very good example is provided here from microsoft docs... https://docs.microsoft.com/en-us/dotnet/api/system.lazy-1?view=netframework-4.7.2#examples
