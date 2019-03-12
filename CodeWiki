@@ -16,3 +16,4 @@ values stored in the dictionary by key.
 3.How Lazy loading haddles thread safetly
 4.Thread local ? why we need thread local.
 5.Difference between Lazy<T> and Lazy<T>(func<T>) 
+6.Discuss about Lazy intialisation from c# in a nutshell book.
