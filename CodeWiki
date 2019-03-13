@@ -9,7 +9,9 @@ and all the functionality from IEnumeration.
 by key.) this is the advantage of Dictionary you can easily look up by the key. 
 6.Dictionary implements (IEnumerable, ICollection, IList and IDictioanry) -> is a collection of key value pairs. you can access easily the 
 values stored in the dictionary by key. 
-Concurrent Dictionary is a threadsafe version of Dictionary ( What does this mean ? thread safe means in a multi threaded environment,
+Concurrent Dictionary:
+----------------------
+is a threadsafe version of Dictionary ( What does this mean ? thread safe means in a multi threaded environment,
 when some thread is modifying the dictionary only one thread at a time able to modify the data, This is similar like Locking machanism) once
 modification complets the modified values are avilalbe for all threads. 
 What is not thread safe ? If a object is not thread safe, multiple threads can access the same object at same time and modify the contents. 
