@@ -35,3 +35,9 @@ view=netframework-4.7.2#examples
 ------------
 Auto mapper is a OpenSource library for automatically Map the model class (U.I model) to Repository class (DB POCO class). 
 and also back from Repository class (D.B POCO class) to U.I model class. You need to set it in applciation settings (config file.)
+
+03/15/2019:
+-----------
+https://javascript.info/ -> found a great resource to understand Javascript, Like DOM,BOM, core javascript and additional turorial. 
+BOM -> Browser sepcific functionality, DOM -> Content specific functionality. how to pass information form one window to another window.
+etc..
