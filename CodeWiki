@@ -41,3 +41,13 @@ and also back from Repository class (D.B POCO class) to U.I model class. You nee
 https://javascript.info/ -> found a great resource to understand Javascript, Like DOM,BOM, core javascript and additional turorial. 
 BOM -> Browser sepcific functionality, DOM -> Content specific functionality. how to pass information form one window to another window.
 etc..
+
+03/24/2019 
+----------
+PS0: The big picture (mostly theory covering over all conepts what is good, not good @React)
+PS1: React Getting started ( 3 examples 2 examples on JScomplete playground and one example project using creat react app tool 
+supported by Facebook. (one section on Javascript crash course to get started with React...)
+PS2: React fundamentals (Mostly dealing with Theory - Components, Events, Forms, State, JSX - by completing the course you will
+build a Author quiz) 
+PS3: adaptive skill learning : You can quickly go over and try to understand the basics of each component by clicking on each node. 
+https://app.pluralsight.com/adaptive-skill-learning 
