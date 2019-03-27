@@ -1,0 +1,100 @@
+https://stackoverflow.com/questions/15595289/linq-to-entities-join-vs-groupjoin
+--------------------------------------------------------------------------------
+
+Behaviour
+Suppose you have two lists:
+
+Id  Value
+1   A
+2   B
+3   C
+
+Id  ChildValue
+1   a1
+1   a2
+1   a3
+2   b1
+2   b2
+When you Join the two lists on the Id field the result will be:
+
+Value ChildValue
+A     a1
+A     a2
+A     a3
+B     b1
+B     b2
+When you GroupJoin the two lists on the Id field the result will be:
+
+Value  ChildValues
+A      [a1, a2, a3]
+B      [b1, b2]
+C      []
+So Join produces a flat (tabular) result of parent and child values.
+GroupJoin produces a list of entries in the first list, each with a group of joined entries in the second list.
+
+That's why Join is the equivalent of INNER JOIN in SQL: there are no entries for C. While GroupJoin is the equivalent of OUTER JOIN: C is in the result set, but with an empty list of related entries (in an SQL result set there would be a row C - null).
+
+Syntax
+So let the two lists be IEnumerable<Parent> and IEnumerable<Child> respectively. (In case of Linq to Entities: IQueryable<T>).
+
+Join syntax would be
+
+from p in Parent
+join c in Child on p.Id equals c.Id
+select new { p.Value, c.ChildValue }
+returning an IEnumerable<X> where X is an anonymous type with two properties, Value and ChildValue. This query syntax uses the Join method under the hood.
+
+GroupJoin syntax would be
+
+from p in Parent
+join c in Child on p.Id equals c.Id into g
+select new { Parent = p, Children = g }
+returning an IEnumerable<Y> where Y is an anonymous type consisting of one property of type Parent and a property of type IEnumerable<Child>. This query syntax uses the GroupJoin method under the hood.
+
+We could just do select g in the latter query, which would select an IEnumerable<IEnumerable<Child>>, say a list of lists. In many cases the select with the parent included is more useful.
+
+Some use cases
+1. Producing a flat outer join.
+As said, the statement ...
+
+from p in Parent
+join c in Child on p.Id equals c.Id into g
+select new { Parent = p, Children = g }
+... produces a list of parents with child groups. This can be turned into a flat list of parent-child pairs by two small additions:
+
+from p in parents
+join c in children on p.Id equals c.Id into g // <= into
+from c in g.DefaultIfEmpty()               // <= flattens the groups
+select new { Parent = p.Value, Child = c?.ChildValue }
+The result is similar to
+
+Value Child
+A     a1
+A     a2
+A     a3
+B     b1
+B     b2
+C     (null)
+Note that the range variable c is reused in the above statement. Doing this, any join statement can simply be converted to an outer join by adding the equivalent of into g from c in g.DefaultIfEmpty() to an existing join statement.
+
+This is where query (or comprehensive) syntax shines. Method (or fluent) syntax shows what really happens, but it's hard to write:
+
+parents.GroupJoin(children, p => p.Id, c => c.Id, (p, c) => new { p, c })
+       .SelectMany(x => x.c.DefaultIfEmpty(), (x,c) => new { x.p.Value, c?.ChildValue } )
+So a flat outer join in LINQ is a GroupJoin, flattened by SelectMany.
+
+2. Preserving order
+Suppose the list of parents is a bit longer. Some UI produces a list of selected parents as Id values in a fixed order. Let's use:
+
+var ids = new[] { 3,7,2,4 };
+Now the selected parents must be filtered from the parents list in this exact order.
+
+If we do ...
+
+var result = parents.Where(p => ids.Contains(p.Id));
+... the order of parents will determine the result. If the parents are ordered by Id, the result will be parents 2, 3, 4, 7. Not good. However, we can also use join to filter the list. And by using ids as first list, the order will be preserved:
+
+from id in ids
+join p in parents on id equals p.Id
+select p
+The result is parents 3, 7, 2, 4
