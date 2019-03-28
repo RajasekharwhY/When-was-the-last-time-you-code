@@ -1,0 +1,35 @@
+https://stackoverflow.com/questions/9186560/inject-a-dependency-into-a-custom-model-binder-and-using-inrequestscope-using-ni
+The factory implementation:
+
+public interface IPostRepositoryFactory
+{
+    IPostRepository CreatePostRepository();
+}
+
+public class PostRepositoryFactory : IPostRepositoryFactory
+{
+    private readonly string key = "PostRepository";
+
+    public IPostRepository CreatePostRepository()
+    {
+        IPostRepository repository;
+
+        if (HttpContext.Current.Items[key] == null)
+        {
+            repository = new PostRepository();
+            HttpContext.Current.Items.Add(key, repository);
+        }
+        else
+        {
+            repository = HttpContext.Current.Items[key] as PostRepository;
+        }
+
+        return repository;
+    }
+}
+// original problem for what they resolved 
+The ModelBinders are reused by MVC for multiple requests. 
+This means they have a longer lifecycle than request scope and therefore aren't allowed to 
+depend on objects with the shorter request scope life cycle.
+
+Use a Factory instead to create the IPostRepository for every execution of BindModel
