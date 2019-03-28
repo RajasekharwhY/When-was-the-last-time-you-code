@@ -33,3 +33,4 @@ This means they have a longer lifecycle than request scope and therefore aren't 
 depend on objects with the shorter request scope life cycle.
 
 Use a Factory instead to create the IPostRepository for every execution of BindModel
+https://stackoverflow.com/questions/10257257/entity-and-repository-pattern-with-ninject-dispose-issue
