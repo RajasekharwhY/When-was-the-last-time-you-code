@@ -51,3 +51,13 @@ PS2: React fundamentals (Mostly dealing with Theory - Components, Events, Forms,
 build a Author quiz) 
 PS3: adaptive skill learning : You can quickly go over and try to understand the basics of each component by clicking on each node. 
 https://app.pluralsight.com/adaptive-skill-learning 
+04/27/2019
+-----------
+1. null ternary operator : statemnet ? : () after ? both should be of same type
+2. you can use collection to exclude in side query synatax  where new list <int> {const1, const2}.contains (table.clumnvalue)
+3. using of Ajax calls - when you dont want to update whole page content, supposte you have many fileds in the page and you
+only want to update on filed then jqery ajax is good choice. in c# you need to pass json object and in frontend where the 
+result we recieve $.parseJson("the value returned from c# object"); => this will give use the javascript object passed via 
+return json(new {x = , y = , z = },  ) ;
+
+
