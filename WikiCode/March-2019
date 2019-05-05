@@ -1,0 +1,53 @@
+03/05/2019 : 
+-------------
+1.IEnumerable provides minimum functinality to navigate move next (but you can not call count )
+2.Icollection provides minimum functionality to count ( you can count) ICollection is derived from IEnumerable so ICollection has count 
+and all the functionality from IEnumeration.
+3.IList supports both IEnumerable and ICollection. ( you can access by index, add range, add and remove elements)
+4.List is a concrete type which implements all the above IEnumerable, ICollecgtion, IList
+5.Dictionary is a key value pair, you can access the collection with key ( even if you have millions of records you can easily access them
+by key.) this is the advantage of Dictionary you can easily look up by the key. 
+6.Dictionary implements (IEnumerable, ICollection, IList and IDictioanry) -> is a collection of key value pairs. you can access easily the 
+values stored in the dictionary by key. 
+Concurrent Dictionary:
+----------------------
+is a threadsafe version of Dictionary ( What does this mean ? thread safe means in a multi threaded environment,
+when some thread is modifying the dictionary only one thread at a time able to modify the data, This is similar like Locking machanism) once
+modification complets the modified values are avilalbe for all threads. 
+What is not thread safe ? If a object is not thread safe, multiple threads can access the same object at same time and modify the contents. 
+so other threads may loose the modification made by the other thread.
+03/11/2019:
+-----------
+1.Concurrent collection 
+2.What is Thread safty ?
+3.How Lazy loading haddles thread safetly
+4.Thread local ? why we need thread local.
+5.Difference between Lazy<T> and Lazy<T>(func<T>) 
+6.Discuss about Lazy intialisation from c# in a nutshell book.
+7.Lazy<T> has a value Property -> when you call the value property then only lazy intialisation is called. 
+8.Lazy<T> Initialization is a thread safe (that means it protects during intialisation),
+but it does not protect after creation of the object, you must lock the object before accessing it. Unless the type is thread safe. 
+Thread safe objects in dot net are available in system.Collections.Concurrent --
+9.Very good example is provided here from microsoft docs... https://docs.microsoft.com/en-us/dotnet/api/system.lazy-1?
+view=netframework-4.7.2#examples
+
+03/12/2019:
+------------
+Auto mapper is a OpenSource library for automatically Map the model class (U.I model) to Repository class (DB POCO class). 
+and also back from Repository class (D.B POCO class) to U.I model class. You need to set it in applciation settings (config file.)
+
+03/15/2019:
+-----------
+https://javascript.info/ -> found a great resource to understand Javascript, Like DOM,BOM, core javascript and additional turorial. 
+BOM -> Browser sepcific functionality, DOM -> Content specific functionality. how to pass information form one window to another window.
+etc..
+
+03/24/2019 
+----------
+PS0: The big picture (mostly theory covering over all conepts what is good, not good @React)
+PS1: React Getting started ( 3 examples 2 examples on JScomplete playground and one example project using creat react app tool 
+supported by Facebook. (one section on Javascript crash course to get started with React...)
+PS2: React fundamentals (Mostly dealing with Theory - Components, Events, Forms, State, JSX - by completing the course you will
+build a Author quiz) 
+PS3: adaptive skill learning : You can quickly go over and try to understand the basics of each component by clicking on each node. 
+https://app.pluralsight.com/adaptive-skill-learning
