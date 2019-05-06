@@ -8,3 +8,14 @@ http is the important module where it has request and response objects.
 also if you practice fs file system you can understand call backs (fs version < 10.1 i guess)  and promises ( fs version > 10.01)
 ( Promises are advanced version of callbacks).
 So if you want how to use methods using callbacks/promises these are the good places to experiment. 
+May/5/2019
+-----------
+Today, I read elequent javascript book, learned about import/export when using the external modules. 
+you can import the classes, objects, bindings funcitons etc... 
+elequent javascript has a charpter on classes, need to read that too, and it has lot of practice excercises. 
+Yesterday you read about Node.js and realised that working with some third partly modules like fs, http will 
+get you understand about promises, call backs and usage of them. 
+
+Mozilla develper is a good resource :
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import  - to practice on 
+callback functions, promises.
