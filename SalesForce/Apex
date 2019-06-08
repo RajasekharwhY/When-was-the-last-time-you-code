@@ -1,0 +1,21 @@
+Apex Basics & Database : 2 hrs 45 min 
+https://trailhead.salesforce.com/content/learn/modules/apex_database?trail_id=force_com_dev_beginner
+
+Apex enables the developers to add business logic to system events like button click and update of records and visual force pages.
+Where the apex is exectuted -> lightining platform 
+Apex is object oriented and strongly typed 
+
+Apex is stored,compiled and executed in the cloud.
+Triggers are just like triggeres in the database.
+supports transactions and rollbacks
+db statements that allow to make direct db calls.
+case insensitive language 
+access modifier 
+- global which is more permissive and allow access across namespaces and applications.
+- public 
+
+Developement tools: 
+------------------- You can write Apex and access debugging information 
+direclty  in the browser by using saleasforce user interface.
+
+You can also write Apex in force.com IDE eclipse plugin. 
