@@ -3,5 +3,20 @@
 databases and business inteligence tools. Example : AWS 
 3. Saas -> provision of application across the internet ( office -365) 
 
-Moving from In premises to Cloud ;
+Moving from In premises to Cloud ; The benefits of using going from on premises to cloud
 ----------------------------------
+1. Scale
+2. Flexibility 
+3. Performance
+4. Speed 
+5. Security 
+6. cost 
+
+6R to when analysing the current systems:
+------------------------------------------
+1.Remove
+2.Retain 
+3.Replatform
+4.Rehost
+5.Repurchase
+6.Refactor - Also need to have full plan of migraiton to cloud. 
