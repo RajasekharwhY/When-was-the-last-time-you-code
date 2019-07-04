@@ -1,0 +1,15 @@
+State and strategy looks similar they both use composition -> so you say both are same ? no 
+These patterns differ by follwoing
+
+State : object changes its behaviour based on the state. it keeps changing based on the state.
+
+Strategy: try to remember the ducks determine the fly behaviour from the fly object they are composed with. and state pattern 
+does the exact same thing it composes with object that determins its behavior (that is based on the state the system is in)
+So there is a greater similarity in both state and strategy pattern.
+
+But both are differ in their intents. (In state we are modeling the system by stepping through 
+differet states of the system in a pre-determined order) which is the order of state transisions.
+
+While strategy delegating the behaviour to class using some high level decision. And it is common just set once 
+for an object , the intent is asign the behavior to class and stay with it for long time. but with sate 
+we continusly changing its behavior based on the state of the object(via state diagram).
