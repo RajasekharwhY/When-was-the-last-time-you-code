@@ -1,0 +1,30 @@
+Power shell is a windows tool it is including with scripting language and a command line shell 
+Allowing resources to be managed from Command line than from the GUI.
+
+It can be used to configure manage and control the on premises or cloud based resources 
+such as windows server 2019, 
+
+ISE (Integrated Script Engine- you can build scripts) - which is used to create, edit and reuse the scripts.
+
+Powershell commands are known as --> cmdlets , they are exectuted in sequencial manager (one after another)
+powershell cmdlets use Verb-noun pair. ( ex: get-object, remove-object )
+Library includs thousands of cmdlets
+For many cloud related tasks you can only use Powershell. Powershell you can directly use with in the Azure portal.
+
+Powershell Benefits : It is not as easy -because it has no user interface.
+But then why use them : it is possible to access the resources with powershell (and it is impossible for GUI)
+
+Resources for learning powershell:
+----------------------------------
+Powershell documentation from microsoft.
+ebook: learn windows powershell in a month of lunches -Don johns & Jeffery hicks.
+
+AZURE : When managing IT systems in the cloud, you can exprect to use powershell. (There is a Azure Powershell)
+
+it is expected that you need some Powershell knowledge when you are working with Azure. 
+evern Azure fundamentals certification exam: also asks about some powershell related questions.
+
+
+
+
+
