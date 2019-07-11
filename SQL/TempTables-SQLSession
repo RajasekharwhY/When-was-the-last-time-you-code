@@ -1,0 +1,5 @@
+Temp table starts with #  --> This table is only available for a user session. (Once user session closes, connection 
+closes the temp table is deleted from )
+System Databases  -> tempdb database 
+
+Global temp table starts with ## --> Sometimes, you may want to create a temporary table that is accessible across connections
