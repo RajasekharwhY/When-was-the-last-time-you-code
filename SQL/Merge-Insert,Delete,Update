@@ -1,0 +1,12 @@
+Merge : Advantage of merge:
+Using Merge to insert, update and delete at the same time to sync the data from
+source table to target table.
+
+By using Merge we can get the performance gain (Rather than using 
+Insert, Update and Delete seperately to upate in target table from the source table)
+This is similar to UPSERT ( UPDATE + INSERT) command in  Oracle.
+
+Usually following clauses:
+WHEN MATCHED --> Usually used for UPDATE 
+WHEN [TARGET] NOT MATCHED --> Usually used for Insert
+WHEN SOURCE NOT MATCHED --> Usually used for Delete.
