@@ -1,1 +1,6 @@
-Rank
+Rank -> 
+Rank is a windows funciton that assigns Rank to each row with in a 
+partision of a result set.
+
+The rows with in a partision that have same value will recieve the same rank.so rank values are not 
+consecutive.
