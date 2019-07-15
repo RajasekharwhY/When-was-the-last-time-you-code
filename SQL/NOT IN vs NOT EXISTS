@@ -2,3 +2,31 @@ The execution plans may be the same at the moment but if either column is
 altered in the future to allow NULLs the NOT IN version will need to do more work 
 (even if no NULLs are actually present in the data) and the semantics of NOT IN if
 NULLs are present are unlikely to be the ones you want anyway.
+
+Exists:
+
+Below three queries the resutl will be same. Exists returns true and returns the result set.
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProdcutID FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT * FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
+
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT 1 FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
+
+-------------------------------------------------------------------------------------------
+Not Exists is exactly opposite of the exist. below two queries the result set will be same. 
+-------------------------------------------------------------------------------------------
+SELECT SupplierName
+FROM Suppliers
+WHERE  NOT EXISTS (SELECT 1 FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
+
+SELECT SupplierName
+FROM Suppliers
+WHERE  NOT EXISTS (SELECT * FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
