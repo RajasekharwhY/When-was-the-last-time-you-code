@@ -1,2 +1,14 @@
 select 1 from table will return the constant 1 for every row of the table. It's useful when you want to 
 cheaply determine if record matches your where clause and/or join.
+
+For exammple, below two queries returns the same results : but if you uses select 1 From -> it will be a cheaper compared to 
+select *
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT * FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
+
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT 1 FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price == 18);
