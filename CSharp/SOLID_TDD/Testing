@@ -1,0 +1,27 @@
+There are multiple frameworks avaialbe for .Net
+1. MS Test
+2. N Unit
+3. X Unit 
+
+you often need data for testing the code.
+like customer or products. We create those data with Mocking frameworks.
+
+The primary purpose of the unit test is that our code is functioning as expected. 
+
+1.FaekitEasy:
+2.Nsubstitute
+3.Moq ( how to use code in isolation) 
+ -- setup and create Moq objects
+ -- setup mock methods /properties and return the values you want
+ -- check the expected members are called/invoked - using behavior based testing
+ --- create and testing exceptions
+
+Different types of Moq objects : 
+
+Fakes : 
+Stubs : Provide answer to calls ..we can setup what a property returns and what a method returns 
+Mocks : To check if the property was accesed or method was called.
+Dummies : They never used by test code, to serve the purpose of input requirement like input to a mehtod.satisfy 
+
+Test double - is a generic term for either stubs, Mocks , Dummies or Fakes, it is  a generic term where you are replacing 
+for production object with Moq object ()
