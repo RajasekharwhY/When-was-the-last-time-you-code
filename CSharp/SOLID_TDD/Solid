@@ -1,0 +1,23 @@
+S: Single Resposiblity 
+
+Class or Method :- should have specific reason (only one reason to change.)
+Assuming you class is handling to calculate Mortagage : It should not handle the report/File processing etc.. some other class should do it
+
+
+O : Open closed principle : Our above mortagage class should be extendable by say beeing inherited by another class, which
+has the functionality of getting latest intrest rate. changes to the base class is not permitted, In other words it is open for
+extension and closed for modification.
+
+L : Liscove substitue method : The derieved class must be substitute base class. In your program, the object instances can be 
+replaced with sub classses where base class is used, with out altering the behavior.
+
+I : Interface segrigation principle : dont go wiht big Interface with multiple  roles : example : Mortage Interface don't go with
+calculating and reprorting. because there un releated. 
+
+D : Dependency Inversion Principle. : We should depend on Abstractions , not concretions. 
+Abstraction : Interfaces
+Concrete : with logic 
+What it is saying is, if I have to Inherit from one of these ( concretion and abstraction). 
+You have to choose a choice then go for Interface. It really creates decoupling.  
+
+These principles prevent you from beeing coupled. 
