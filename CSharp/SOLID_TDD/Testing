@@ -19,9 +19,16 @@ The primary purpose of the unit test is that our code is functioning as expected
 Different types of Moq objects : 
 
 Fakes : 
-Stubs : Provide answer to calls ..we can setup what a property returns and what a method returns 
+Stubs : Provide answer to calls ..we can setup what a property returns and what a method returns.
+      var moqObject = new Mock<"InterfaceYouWanttoMock">();
+      Suppose InterfaceYouWanttoMock has method "Process" with takes string as a parameter.
+      moqObject.Setup(x=> x.Process(it.Any<string>)).returns(); => with the setup mehtod you can configure the 
+      retrun values. 
 Mocks : To check if the property was accesed or method was called.
+        moqObject.verify(x=> x.Initialise()) ==> this verfiy method is used for testing the behavior. if Initialise() 
+        method is called.
 Dummies : They never used by test code, to serve the purpose of input requirement like input to a mehtod.satisfy 
+            ex (it.Any<string>, it.Any<int>)
 
 Test double - is a generic term for either stubs, Mocks , Dummies or Fakes, it is  a generic term where you are replacing 
 for production object with Moq object ()
