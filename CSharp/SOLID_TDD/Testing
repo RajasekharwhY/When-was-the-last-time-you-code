@@ -24,7 +24,7 @@ Stubs : Provide answer to calls. We can setup what a property returns and what a
       Suppose InterfaceYouWanttoMock has method "Process" with takes string as a parameter.
       2. moqObject.Setup(x=> x.Process(it.Any<string>)).returns(); => with the setup mehtod you can configure the 
       retrun values. 
-Mocks : To check if the property was accesed or method was called.
+Mocks : To check if the property was accesed or method was called. (this is behaviour testing.)
         1. moqObject.verify(x=> x.Initialise()) ==> this verfiy method is used for testing the behavior. if Initialise() 
         method is called.
         2.  Above example is method  call wiht out any parameters. Now if you want to verify if the method is 
@@ -44,3 +44,9 @@ Dummies : They never used by test code, to serve the purpose of input requiremen
 
 Test double - is a generic term for either stubs, Mocks , Dummies or Fakes, it is  a generic term where you are replacing 
 for production object with Moq object ()
+
+Using partialMoq's and advanced moqing techniques:
+---------------------------------------------------
+Here you will learn Instead of mocking Interface you can moq the Class. 
+
+
