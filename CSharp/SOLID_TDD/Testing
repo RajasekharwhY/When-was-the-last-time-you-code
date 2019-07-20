@@ -37,6 +37,7 @@ Mocks : To check if the property was accesed or method was called.
         if you care about what value to be set  moqObject.VerifyGet(x=>x.Property = "2")
         if you don't care about what value you are going to set, just care about if it is set 
         you can use teh dummies moqObject.VerifyGet(x=>x.Prorety = it.Any<int>);
+        5. moqObject.VerifyNoOtherCalls(); is called. 
         
 Dummies : They never used by test code, to serve the purpose of input requirement like input to a mehtod.satisfy 
             ex (it.Any<string>, it.Any<int>)
