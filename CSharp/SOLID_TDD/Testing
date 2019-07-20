@@ -19,17 +19,25 @@ The primary purpose of the unit test is that our code is functioning as expected
 Different types of Moq objects : 
 
 Fakes : 
-Stubs : Provide answer to calls ..we can setup what a property returns and what a method returns.
-      var moqObject = new Mock<"InterfaceYouWanttoMock">();
+Stubs : Provide answer to calls. We can setup what a property returns and what a method returns.
+      1. var moqObject = new Mock<"InterfaceYouWanttoMock">();
       Suppose InterfaceYouWanttoMock has method "Process" with takes string as a parameter.
-      moqObject.Setup(x=> x.Process(it.Any<string>)).returns(); => with the setup mehtod you can configure the 
+      2. moqObject.Setup(x=> x.Process(it.Any<string>)).returns(); => with the setup mehtod you can configure the 
       retrun values. 
 Mocks : To check if the property was accesed or method was called.
-        moqObject.verify(x=> x.Initialise()) ==> this verfiy method is used for testing the behavior. if Initialise() 
+        1. moqObject.verify(x=> x.Initialise()) ==> this verfiy method is used for testing the behavior. if Initialise() 
         method is called.
-        2. Above example is method  call wiht out any parameters. Now if you want to verify if the method is 
+        2.  Above example is method  call wiht out any parameters. Now if you want to verify if the method is 
         beeing called wiht given parameters 
         moqObject.Verify(x=>x.Initialise("Raja")) => the Initialise method is called with "Raja"
+        3. You can test/ verify how many number of times the method gets called. There is a struct 
+        Times.atlestonec, Times.never something like that, so you can make sure if the method is called or not 
+        if called how many nubmer of times etc..
+        4. Toverify if the properties are called, we can use the moqObject.VerifyGet(x =>x.Property); 
+        if you care about what value to be set  moqObject.VerifyGet(x=>x.Property = "2")
+        if you don't care about what value you are going to set, just care about if it is set 
+        you can use teh dummies moqObject.VerifyGet(x=>x.Prorety = it.Any<int>);
+        
 Dummies : They never used by test code, to serve the purpose of input requirement like input to a mehtod.satisfy 
             ex (it.Any<string>, it.Any<int>)
 
