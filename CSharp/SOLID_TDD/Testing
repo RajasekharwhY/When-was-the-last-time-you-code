@@ -27,6 +27,9 @@ Stubs : Provide answer to calls ..we can setup what a property returns and what 
 Mocks : To check if the property was accesed or method was called.
         moqObject.verify(x=> x.Initialise()) ==> this verfiy method is used for testing the behavior. if Initialise() 
         method is called.
+        2. Above example is method  call wiht out any parameters. Now if you want to verify if the method is 
+        beeing called wiht given parameters 
+        moqObject.Verify(x=>x.Initialise("Raja")) => the Initialise method is called with "Raja"
 Dummies : They never used by test code, to serve the purpose of input requirement like input to a mehtod.satisfy 
             ex (it.Any<string>, it.Any<int>)
 
