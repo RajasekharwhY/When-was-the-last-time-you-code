@@ -1,0 +1,32 @@
+Clusterd Index : Is the way of representing the base data as a whole.
+---------------
+
+Non Clusterd Index : is a phlysically seperate structure, that references the base data and it can have different sort order.
+------------------
+
+example : 
+Table phone book --has 3 columns ( First Name, Last Name, Phone Number). When this table has no indexes at all and when new rows are added,
+they are added where ever theere is a free space and in no perticular order. 
+
+In the above scenario, if we have to check the phone number, we have to check every row in the table until it finds and also need to 
+check other rows because it don't know same match will find remaining rows, because there
+is  no order in the table. This kind of search is called SCAN (it is very in efficient) 
+
+Perticulartly in this case , we know this is not efficient.
+In phonebook names are ways stored by last name, if there are multiple last names the the lists based on first name is stored. 
+In database terminalagy this is called Index key and ordered list of columns and assosiated sort directions.
+
+Index key (Ordered list of columns)
+
+Index pages : 
+
+
+RID -> Row Identification ( Set of references back to the base data , with this type we can reorder any type of index key order
+----
+we want, because the order is  independent of base data (physical data or heap))
+Heap -> Physical data 
+-----
+
+since non clustered data is not heap data (physcial data), the physcial data can exists as a clusted index.
+
+What is index tree : 
