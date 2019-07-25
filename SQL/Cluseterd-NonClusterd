@@ -4,7 +4,12 @@ Clusterd Index : Is the way of representing the base data as a whole.
 Non Clusterd Index : is a phlysically seperate structure, that references the base data and it can have different sort order.
 ------------------
 
-example : 
+Include -> Non - Key values,  add copies of non key colum values to the leaf level of index tree. this means queries 
+using the non clustered index wont have to inccur the expesnse of not having to go to the base data to get those non
+key column values.
+
+Example : 
+---------
 Table phone book --has 3 columns ( First Name, Last Name, Phone Number). When this table has no indexes at all and when new rows are added,
 they are added where ever theere is a free space and in no perticular order. 
 
@@ -18,12 +23,13 @@ In database terminalagy this is called Index key and ordered list of columns and
 
 Index key (Ordered list of columns)
 
-Index pages : 
+Index Tree :
+Index pages : These pages allows navigate to the directly they are intrested in. 
 
 
 RID -> Row Identification ( Set of references back to the base data , with this type we can reorder any type of index key order
 ----
-we want, because the order is  independent of base data (physical data or heap))
+We want, because the order is  independent of base data (physical data or heap))
 Heap -> Physical data 
 -----
 
