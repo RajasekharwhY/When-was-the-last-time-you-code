@@ -1,0 +1,3 @@
+When creating a mock, we can also give it strict or loose behavior. 
+Strict behavior means that exceptions will be thrown if anything that was not set up on our interface is called. Loose behavior, on the other hand,
+does not throw exceptions in situations like this. Mocks, by default, are loose.
