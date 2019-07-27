@@ -60,4 +60,9 @@ only want to update on filed then jqery ajax is good choice. in c# you need to p
 result we recieve $.parseJson("the value returned from c# object"); => this will give use the javascript object passed via 
 return json(new {x = , y = , z = },  ) ;
 
+07/27/2019 :
+------------
+Opne closed principle : A class should open for extending the behavior, but closed for code modification.
+This is a powerfull line revealed during a quiz test in one of the linked in Design patterns tutorial.
+
 
