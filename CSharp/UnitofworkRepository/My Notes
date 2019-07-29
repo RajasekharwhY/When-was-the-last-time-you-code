@@ -1,0 +1,23 @@
+Repository and Unitof work patterns act like a abstraction layer between 
+database and business layer.
+
+Helps for Unit testing and TDD.
+
+For each Entity you will create a repository Interface and repository class.
+The respository pattern implements IDisposable which implements the Dispose mehthod to 
+dispose the context object.
+
+each repository class implements add, remove, update, operations.  
+context.add()
+context. remove()
+context.Entry(student).State = EntityState.Modified; // to track the modified state.
+contxt.save();
+
+what is GC.SuppressFinalize(this);  The destructor calls object.Finalise method.
+-----------------------------------
+Objects that implement the IDisposable interface can call this method from the object's IDisposable.Dispose 
+implementation to prevent the garbage collector from calling Object.Finalize on an object that does not require it. 
+Typically, this is done to prevent the finalizer from releasing unmanaged resources 
+that have already been freed by the IDisposable.Dispose implementation.
+
+If you want to use multiple repositores in a controller, then Unit of work patterns comes handy.
