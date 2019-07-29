@@ -20,4 +20,10 @@ implementation to prevent the garbage collector from calling Object.Finalize on 
 Typically, this is done to prevent the finalizer from releasing unmanaged resources 
 that have already been freed by the IDisposable.Dispose implementation.
 
+Implement a Generic Repository and a Unit of Work Class
+--------------------------------------------------------
+unit of work pattern also implements IDsiposable pattern
+here there is only one context for multiple repsoitories. (in repository each repository has one context)
+when working with multiple respositories unit of work patterns is easy.
+
 If you want to use multiple repositores in a controller, then Unit of work patterns comes handy.
