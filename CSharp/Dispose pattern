@@ -1,0 +1,7 @@
+https://www.youtube.com/watch?v=cZtgIwHLJmc
+
+Finalyse is the destructor in c#
+we have to call the dispose method in finalyse. (destructor)
+Finalyse method is automatically called by clr.
+
+so dispose() mehtod we will clean the un managed resources ( we will dispose the un managed resources ) 
