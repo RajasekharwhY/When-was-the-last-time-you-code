@@ -5,3 +5,10 @@ we have to call the dispose method in finalyse. (destructor)
 Finalyse method is automatically called by clr.
 
 so dispose() mehtod we will clean the un managed resources ( we will dispose the un managed resources ) 
+
+what is GC.SuppressFinalize(this);  The destructor calls object.Finalise method.
+-----------------------------------
+Objects that implement the IDisposable interface can call this method from the object's IDisposable.Dispose 
+implementation to prevent the garbage collector from calling Object.Finalize on an object that does not require it. 
+Typically, this is done to prevent the finalizer from releasing unmanaged resources 
+that have already been freed by the IDisposable.Dispose implementation.
