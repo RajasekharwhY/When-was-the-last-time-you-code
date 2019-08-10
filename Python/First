@@ -2,3 +2,18 @@
 2. getters and setters
 3. Classes, constructors (self) --> This
 4. 
+
+
+
+------------------
+--comments 
+# single line comment
+''' 
+   Multi line comment
+'''
+
+@property
+def employee_nam();
+
+@empolyee_nam().setter:
+def employee_nam()
