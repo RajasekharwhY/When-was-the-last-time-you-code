@@ -1,0 +1,6 @@
+Aug-24: 
+Learned new features of ES6 and Typescript:
+Most of the existing browsers support only ES-5, by using typescirpt you can use ES-6 features. 
+When you transcompile typescript, you can convert the javascript (ES-5) versiion.
+
+You can use Interfaces in typescript, and also Access modfiers in Typescript.
