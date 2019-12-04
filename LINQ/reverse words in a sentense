@@ -1,0 +1,5 @@
+ // direct Reverse() function is available on array
+ string sentense = "Hello I am Rajasekhar Today is a good day";
+ string[] wordCollection = sentense.Split(" ");
+ var result = wordCollection.Reverse().Aggregate((x,y) => x+' '+y);
+ Console.WriteLine(result);
