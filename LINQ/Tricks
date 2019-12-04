@@ -1,0 +1,7 @@
+1. when ever if you want to iterate in loop.
+think of iterating over the wordlenth or on word. 
+iterating over the word lenth like Enumerable.Range(1,word.Lenth) can provide 
+both index and the oringal word in hand to manipulate. 
+
+new string (Array()) -> to create new string in side select. 
+Take() and skip() operators are handly to get the requried number in the sequences. 
