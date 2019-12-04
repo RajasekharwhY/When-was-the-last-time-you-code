@@ -1,0 +1,25 @@
+string word = "Wordpyramid";
+var reust = Enumerable.Range(1, word.Length)
+                      .Select(x => new String(word.ToCharArray().Take(x).ToArray()))
+                      .Concat(
+                       Enumerable.Range(1, word.Length)
+                       .Select(x => new String(word.ToCharArray().Take(word.Length - x).ToArray()))
+                      );
+                      
+  second solution: 
+  ------------------
+  string word = "Wordpyramid";
+            var reust = Enumerable.Range(1, word.Length)
+                      .Select(x => new String(word.ToCharArray().Take(x).ToArray()));         
+            var reverse = reust.Reverse().Skip(1);
+            var result11 = reust.Concat(reverse);
+            
+                      
+Discussion about the technique: 
+-------------------------------
+you can loop over the index in stead of the word, 
+by this way you have the access over complete word in each iteration and the index.
+new String (Array()) -> build new string using charArray and Take funcitonality. 
+Concat to concatinate the two sequeneces. 
+
+second solutions : reverse the sequence and remove the first element in the reversed collection.
